@@ -1,0 +1,25 @@
+{
+  "name": "mycro-json-api-ify",
+  "version": "0.0.0",
+  "description": "json-api-ify hook for mycro apps",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mycro",
+    "json-api-ify",
+    "rest",
+    "restify",
+    "json",
+    "api"
+  ],
+  "author": "chris ludden",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^1.5.2",
+    "joi": "^8.0.5",
+    "json-api-ify": "^1.0.0",
+    "lodash": "^4.8.2"
+  }
+}
