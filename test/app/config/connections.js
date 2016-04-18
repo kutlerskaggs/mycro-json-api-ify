@@ -1,16 +1,12 @@
 'use strict';
 
+const mongooseAdapter = require('mycro-mongoose');
+
 module.exports = {
-    /*
-    sampleConnection: {
-        adapter: adapter,
+    mongo: {
+        adapter: mongooseAdapter,
         config: {
-            host: 'localhost',
-            port: 27017,
-            username: 'username',
-            password: 'password',
-            database: 'database'
+            url: 'mongodb://localhost:27017/mycro-json-api-ify'
         }
     }
-    */
 };

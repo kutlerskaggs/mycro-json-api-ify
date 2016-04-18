@@ -46,6 +46,49 @@ module.exports = function(mycro) {
                         likes: generateRelationshipConfig('likes', 'user')
                     }
                 }
+            },
+            templates: {
+                default: {
+                    filter: {
+                        rules: [
+                            {
+                                modifier: '$startsWith',
+                                rule(value, field, modifiers) {
+                                    let newModifiers = modifiers.map(function(modifier) {
+                                        if (modifier === '$startsWith') {
+                                            return '$regex';
+                                        }
+                                        return modifier;
+                                    });
+                                    let newValue = new RegExp(`^${value}*`);
+                                }
+                            }
+                        ]
+                    },
+                    page: {
+                        size: {
+                            default: 20,
+                            min: 1,
+                            max: 100
+                        }
+                    }
+                },
+                user: {
+                    filter: {
+                        additionalRules: [
+                            {
+                                field: 'first',
+                                rule(value, field, modifiers) {
+                                    return {
+                                        field: field,
+                                        modifiers: modifiers,
+                                        value: value.toLowerCase()
+                                    };
+                                }
+                            }
+                        ]
+                    }
+                }
             }
         };
     };

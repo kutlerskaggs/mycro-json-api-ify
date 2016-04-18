@@ -1,4 +1,15 @@
 {
     "node": true,
-    "esnext": true
+    "esnext": true,
+    "predef": [
+        "after",
+        "afterEach",
+        "before",
+        "beforeEach",
+        "context",
+        "describe",
+        "it",
+        "mycro",
+        "request"
+    ]
 }

@@ -3,7 +3,7 @@
 module.exports = function(mycro) {
     return {
         'v1.0.0': {
-            '/healthy': {
+            '/health': {
                 get(req, res) {
                     res.json(200, {status: 'healthy'});
                 }

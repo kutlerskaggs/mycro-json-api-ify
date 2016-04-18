@@ -21,5 +21,13 @@
     "joi": "^8.0.5",
     "json-api-ify": "^1.0.0",
     "lodash": "^4.8.2"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mycro-error": "^0.1.0",
+    "mycro-mongoose": "^0.2.0",
+    "node-mocks-http": "^1.5.2",
+    "sinon": "^1.17.3",
+    "sinon-chai": "^2.8.0"
   }
 }
