@@ -192,6 +192,10 @@ describe('[service] rest', function() {
                     }
                 });
             });
+
+
+            it('should allow for the interception of values');
+            it('should allow for fields to be mapped to new fields (id to _id, some-field to someField)');
         });
     });
 });
