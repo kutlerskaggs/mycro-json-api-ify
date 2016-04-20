@@ -4,7 +4,7 @@
   "description": "json-api-ify hook for mycro apps",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test/tests/index.test.js test/tests/ --recursive"
   },
   "keywords": [
     "mycro",
@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "mycro": "^0.5.1",
     "mycro-error": "^0.1.0",
     "mycro-mongoose": "^0.2.0",
     "node-mocks-http": "^1.5.2",

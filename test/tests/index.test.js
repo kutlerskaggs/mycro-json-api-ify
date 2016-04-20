@@ -4,13 +4,15 @@
 
 const chai = require('chai');
 const expect = chai.expect;
-const mycro = require('../app/app');
 const sinonChai = require('sinon-chai');
 const supertest = require('supertest');
 
 chai.use(sinonChai);
 
 before(function(done) {
+    process.chdir(__dirname + '/../app');
+    const mycro = require('../app/app');
+    
     mycro.start(function(err) {
         expect(err).to.not.exist;
         global.request = supertest.agent(mycro.server);

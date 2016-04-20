@@ -1,5 +1,8 @@
 'use strict';
 
+const async = require('async');
+const moment = require('moment');
+const ObjectId = require('mongodb').ObjectId;
 const _ = require('lodash');
 
 module.exports = function(mycro) {
@@ -47,46 +50,24 @@ module.exports = function(mycro) {
                     }
                 }
             },
-            templates: {
-                default: {
-                    filter: {
-                        rules: [
-                            {
-                                modifier: '$startsWith',
-                                rule(value, field, modifiers) {
-                                    let newModifiers = modifiers.map(function(modifier) {
-                                        if (modifier === '$startsWith') {
-                                            return '$regex';
-                                        }
-                                        return modifier;
-                                    });
-                                    let newValue = new RegExp(`^${value}*`);
-                                }
+            rest: {
+                filter: {
+                    modifiers: {
+                        $gt: true,
+                        $gte: true,
+                        $in: true,
+                        $lt: true,
+                        $lte: true,
+                        $objectId(field, value, cb) {
+                            const service = this;
+                            if (!_.isString(value)) {
+                                return async.setImmediate(function() {
+                                    cb(service.errors.badRequest(`The '$objectId' modifier requires a string input`));
+                                });
                             }
-                        ]
-                    },
-                    page: {
-                        size: {
-                            default: 20,
-                            min: 1,
-                            max: 100
-                        }
-                    }
-                },
-                user: {
-                    filter: {
-                        additionalRules: [
-                            {
-                                field: 'first',
-                                rule(value, field, modifiers) {
-                                    return {
-                                        field: field,
-                                        modifiers: modifiers,
-                                        value: value.toLowerCase()
-                                    };
-                                }
-                            }
-                        ]
+                        },
+                        $ne: true,
+                        $nin: true
                     }
                 }
             }
